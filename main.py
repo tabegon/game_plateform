@@ -6,6 +6,7 @@ import os
 
 # Dictionnaire des jeux avec leurs modules et images
 jeux_disponibles = {
+    "Morpion": {"module": "jeux.Morpion.main", "image": "C:/Users/Théo/Documents/Workspace/plateform/game_plateform/assets/morpion.png"},
     "Ultimate Morpion": {"module": "jeux.UltimateMorpion.main", "image": "C:/Users/Théo/Documents/Workspace/plateform/game_plateform/assets/ultimate.png"},
     "2048": {"module": "jeux.2048.main", "image": "C:/Users/Théo/Documents/Workspace/plateform/game_plateform/assets/2048.png"},
     "Snake": {"module": "jeux.Snake.main", "image": "C:/Users/Théo/Documents/Workspace/plateform/game_plateform/assets/snake.png"},
@@ -17,7 +18,7 @@ images = {}
 def creer_interface():
     root = tk.Tk()
     root.title("Plateforme de Jeux")
-    root.geometry("400x300")
+    root.geometry("1900x850")
 
     label = tk.Label(root, text="Choisis un jeu :", font=("Arial", 14))
     label.pack(pady=10)
