@@ -321,7 +321,7 @@ def game_over_screen(score):    # on définit l'écran de fin de jeu avec score 
     fenetre.blit(texte_score, texte_score_rect)     # le score
     fenetre.blit(texte_continue, texte_continue_rect) # et les instructions
     pygame.display.update()                         # puis on met à jour la fenêtre
-
+    
 
     # boucle d'attente pour savoir si le joueur relance ou quitte le jeu
     waiting = True

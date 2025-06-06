@@ -4,7 +4,7 @@
 import tkinter as tk        #Ce module crée l'interface graphique
 from tkinter import messagebox  #Affiche la fenêtre d'alerte si le joueur a perdu
 import random
-import os   #Ce module permet d'intéragir avec le système de fichiers. Ici le fichier 'highscore.txt'
+import os   #Ce module permet d'intéragir avec le système de fichiers. Ici le fichier 'highscore2048.txt'
 
 TAILLE_GRILLE = 4
 #On crée le dictionnaire associant chaqe valeur à une couleur
@@ -25,12 +25,12 @@ class Jeu2048: #On crée une classe qui va gérer tout le jeu 2048
         self.grille = [[0]*TAILLE_GRILLE for x in range(TAILLE_GRILLE)] 
         self.score = 0
 
-        self.highscore = self.charger_highscore() #On charge le meilleur score qui est stocké dans un fichier
+        self.highscore2048 = self.charger_highscore() #On charge le meilleur score qui est stocké dans un fichier
         #Cette partie se charge d'afficher le score
         self.score_label = tk.Label(master, text="Score : 0", font=("Helvetica", 18))
         self.score_label.pack(pady=(10, 0))
         #Celle-ci se charge d'afficher le meilleur score
-        self.highscore_label = tk.Label(master, text="Meilleur : " + str(self.highscore), font=("Helvetica", 14))
+        self.highscore_label = tk.Label(master, text="Meilleur : " + str(self.highscore2048), font=("Helvetica", 14))
         self.highscore_label.pack(pady=(0, 10))
         #Cela affiche le cadre contenant la grille
         self.frame = tk.Frame(master, bg="#bbada0")
@@ -51,8 +51,8 @@ class Jeu2048: #On crée une classe qui va gérer tout le jeu 2048
         @param self: instance du jeu contenant les attributs, c'est à dire : grille, score et autre
         @return int: le score le plus élevé enregistré, ou 0 si le fichier n'existe pas ou si c'est la première partie
         """
-        if os.path.exists("highscore.txt"):
-            with open("highscore.txt", "r") as f:
+        if os.path.exists("highscore2048.txt"):
+            with open("highscore2048.txt", "r") as f:
                 texte = f.read()
                 if texte.isdigit(): #On vérifie que le contenu soit bien un nombre
                     return int(texte)
@@ -64,8 +64,8 @@ class Jeu2048: #On crée une classe qui va gérer tout le jeu 2048
         @param self: instance du jeu contenant le score à enregistrer
         @return: il n'y a rien à retouner
         """
-        with open("highscore.txt", "w") as f:
-            f.write(str(self.highscore))
+        with open("highscore2048.txt", "w") as f:
+            f.write(str(self.highscore2048))
 
     def init_interface_grille(self):
         """
@@ -125,9 +125,9 @@ class Jeu2048: #On crée une classe qui va gérer tout le jeu 2048
                 self.score = self.score + gagne
                 self.score_label.config(text="Score : " + str(self.score))
                 #On met à jour le meilleur score
-                if self.score > self.highscore:
-                    self.highscore = self.score
-                    self.highscore_label.config(text="Meilleur : " + str(self.highscore))
+                if self.score > self.highscore2048:
+                    self.highscore2048 = self.score
+                    self.highscore_label.config(text="Meilleur : " + str(self.highscore2048))
                     self.sauvegarder_highscore()
 
                 self.ajouter_tuile()
