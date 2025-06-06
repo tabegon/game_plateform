@@ -8,6 +8,7 @@ import os
 jeux_disponibles = {
     "Ultimate Morpion": {"module": "jeux.UltimateMorpion.main", "image": "C:/Users/Théo/Documents/Workspace/plateform/game_plateform/assets/ultimate.png"},
     "2048": {"module": "jeux.2048.main", "image": "C:/Users/Théo/Documents/Workspace/plateform/game_plateform/assets/2048.png"},
+    "Snake": {"module": "jeux.Snake.main", "image": "C:/Users/Théo/Documents/Workspace/plateform/game_plateform/assets/snake.png"},
 }
 
 # Liste pour garder les références d'image
@@ -28,7 +29,7 @@ def creer_interface():
         images[nom_jeu] = img_tk  # Garder une référence pour éviter que l'image soit supprimée
         bouton = tk.Button(
             root,
-            text=nom_jeu,
+            text= f" {nom_jeu}",
             image=img_tk,
             compound="left",  # image à gauche du texte
             font=("Arial", 24),
