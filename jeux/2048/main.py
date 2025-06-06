@@ -241,10 +241,11 @@ class Jeu2048: #On crée une classe qui va gérer tout le jeu 2048
                 return True
         return False
 
-#On crée de la fenêtre principale avec tkinter
-root = tk.Tk()
-#Cela crée le jeu dans la fenêtre principale et prépare toute l'interface du jeu
-jeu = Jeu2048(root)
-#Démarre la boucle principale de l'interface graphique, qui attend les événements utilisateur, c'est à dire toutes les actions possibles
-root.mainloop()
+def main():
+    #On crée de la fenêtre principale avec tkinter
+    root = tk.Tk()
+    #Cela crée le jeu dans la fenêtre principale et prépare toute l'interface du jeu
+    jeu = Jeu2048(root)
+    #Démarre la boucle principale de l'interface graphique, qui attend les événements utilisateur, c'est à dire toutes les actions possibles
+    root.mainloop()
 

@@ -593,25 +593,25 @@ class Tic_Tac_Boom:
         self.next_turn()
 """
 
-    
-# Création de la partie:
+def main(): 
+    # Création de la partie:
 
-partie = Tic_Tac_Boom()
+    partie = Tic_Tac_Boom()
 
 
 
-menubar = tkinter.Menu(partie.fenetre)
-menu = tkinter.Menu(menubar)
-menu.add_command(label="Activer/Désactiver IA Random", command=partie.active_ia_random)
-menu.add_command(label="Activer/Désactiver IA Moyenne", command=partie.active_ia_moyenne)
-menubar.add_cascade(label="IA", menu=menu)
+    menubar = tkinter.Menu(partie.fenetre)
+    menu = tkinter.Menu(menubar)
+    menu.add_command(label="Activer/Désactiver IA Random", command=partie.active_ia_random)
+    menu.add_command(label="Activer/Désactiver IA Moyenne", command=partie.active_ia_moyenne)
+    menubar.add_cascade(label="IA", menu=menu)
 
-menu_timer = tkinter.Menu(menubar)
-menu_timer.add_command(label="no timer", command=partie.without_timer)
-menu_timer.add_command(label="timer 1 minute", command=partie.temps_1min)
-menu_timer.add_command(label="timer 5 minutes", command=partie.temps_5min)
-menu_timer.add_command(label="timer 10 minute", command=partie.temps_10min)
-menubar.add_cascade(label="Clock", menu=menu_timer)
+    menu_timer = tkinter.Menu(menubar)
+    menu_timer.add_command(label="no timer", command=partie.without_timer)
+    menu_timer.add_command(label="timer 1 minute", command=partie.temps_1min)
+    menu_timer.add_command(label="timer 5 minutes", command=partie.temps_5min)
+    menu_timer.add_command(label="timer 10 minute", command=partie.temps_10min)
+    menubar.add_cascade(label="Clock", menu=menu_timer)
 
-partie.fenetre.config(menu=menubar)
-partie.fenetre.mainloop()
+    partie.fenetre.config(menu=menubar)
+    partie.fenetre.mainloop()
