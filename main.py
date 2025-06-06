@@ -4,7 +4,6 @@ from utils.launcher import lancer_jeu
 from PIL import Image, ImageTk
 import os
 
-# Dictionnaire des jeux avec leurs modules et images
 jeux_disponibles = {
     "Morpion": {"module": "jeux.Morpion.main", "image": "C:/Users/Théo/Documents/Workspace/plateform/game_plateform/assets/morpion.png"},
     "Ultimate Morpion": {"module": "jeux.UltimateMorpion.main", "image": "C:/Users/Théo/Documents/Workspace/plateform/game_plateform/assets/ultimate.png"},
@@ -12,7 +11,6 @@ jeux_disponibles = {
     "Snake": {"module": "jeux.Snake.main", "image": "C:/Users/Théo/Documents/Workspace/plateform/game_plateform/assets/snake.png"},
 }
 
-# Liste pour garder les références d'image
 images = {}
 
 def creer_interface():
@@ -27,15 +25,15 @@ def creer_interface():
         chemin_image = info["image"]
         img = Image.open(chemin_image).resize((100, 100))
         img_tk = ImageTk.PhotoImage(img)
-        images[nom_jeu] = img_tk  # Garder une référence pour éviter que l'image soit supprimée
+        images[nom_jeu] = img_tk
         bouton = tk.Button(
             root,
             text= f" {nom_jeu}",
             image=img_tk,
-            compound="left",  # image à gauche du texte
+            compound="left",
             font=("Arial", 24),
             width=500,
-            anchor="w",  # aligner à gauche
+            anchor="w",
             command=lambda path=info["module"]: lancer_jeu(path)
         )
 
