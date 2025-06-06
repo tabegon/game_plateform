@@ -296,6 +296,7 @@ def accueil():              # on définit la page d'accueil
 
 def game_over_screen(score):    # on définit l'écran de fin de jeu avec score et relance
     global pause                # on appelle pause qui est en dehors de la boucle
+    save_score(score)
     ## Titre Game Over
     font = pygame.font.Font("double-feature-regular.ttf", 100)
     # on définit la police et sa taille
@@ -320,7 +321,21 @@ def game_over_screen(score):    # on définit l'écran de fin de jeu avec score 
     fenetre.blit(texte, texte_rect)                 # on affiche game over,
     fenetre.blit(texte_score, texte_score_rect)     # le score
     fenetre.blit(texte_continue, texte_continue_rect) # et les instructions
+    
+
+    try:
+        with open("highscoresnake.txt", "r") as f:
+            best_score = int(f.read())
+            print(best_score)
+    except:
+        best_score = score  # s'il n'existe pas, on prend le score actuel
+
+    texte_best = font_score.render(f"Meilleur : {best_score}", True, (255, 255, 255))
+    texte_best_rect = texte_best.get_rect(center=(l // 2, h // 2.5 + 110))
+    fenetre.blit(texte_best, texte_best_rect)
+
     pygame.display.update()                         # puis on met à jour la fenêtre
+
     
 
     # boucle d'attente pour savoir si le joueur relance ou quitte le jeu
@@ -336,6 +351,18 @@ def game_over_screen(score):    # on définit l'écran de fin de jeu avec score 
                     pause = not pause               # on met en pause ou relance
                 elif event.key == pygame.K_SPACE:   # si c'est espace
                     return True                     # on rejoue
+
+
+def save_score(score):
+    try:
+        with open("highscoresnake.txt", "r") as f:
+            best = int(f.read())
+    except:
+        best = 0
+
+    if score > best:
+        with open("highscoresnake.txt", "w") as f:
+            f.write(str(score))
 
 
 def main():
